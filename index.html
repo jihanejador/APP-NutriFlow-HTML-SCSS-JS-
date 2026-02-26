@@ -3,90 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cooking App UI</title>
+    <title>NutriFlow | Cooking App</title>
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    <div class="mobile-container">
-        <header class="header">
-            <div class="header__top">
-                <div class="user-info">
-                    <img src="https://ui-avatars.com/api/?name=Samantha" alt="User">
-                    <div>
-                        <p class="greeting">Good Morning</p>
-                        <h2 class="username">Samantha</h2>
-                    </div>
-                </div>
-                <button class="menu-btn">☰</button>
-            </div>
-            <h1 class="hero-text">feeling hungry?<br>what are we cookin today?</h1>
-            
-            <div class="search-bar">
-                <span class="search-icon">🔍</span>
-                <input type="text" placeholder="Hinted search text">
-                <span class="filter-icon">≡</span>
-            </div>
-        </header>
-
-        <section class="categories">
-            <button class="cat-item active">see All</button>
-            <button class="cat-item">Soup</button>
-            <button class="cat-item">BreakFast</button>
-            <button class="cat-item">Salad</button>
-        </section>
-
-        <section class="section-container">
-            <div class="section-header">
-                <h3>Recommendation</h3>
-                <a href="#">see All</a>
-            </div>
-            <div class="grid">
-                <div class="food-card">
-                    <div class="image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1548943487-a2e4e43b4853?q=80&w=200" alt="Tom Yum">
-                        <span class="heart">❤</span>
-                    </div>
-                    <h4>Spicy Thai Tom Yum</h4>
-                    <p>A thanqy and spicy s...</p>
-                </div>
-                <div class="food-card">
-                    <div class="image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?q=80&w=200" alt="Mushroom Soup">
-                        <span class="heart">❤</span>
-                    </div>
-                    <h4>Creamy Mushroom Soup</h4>
-                    <p>A warm velvety Soup Ma...</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section-container">
-            <div class="section-header">
-                <h3>Resipe of the week</h3>
-                <a href="#">see All</a>
-            </div>
-            <div class="grid">
-                <div class="food-card small">
-                    <div class="image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=200" alt="Pizza">
-                        <span class="heart">❤</span>
-                    </div>
-                </div>
-                <div class="food-card small">
-                    <div class="image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1473093226795-af9932fe5856?q=80&w=200" alt="Pasta">
-                        <span class="heart">❤</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <nav class="bottom-nav">
-            <button class="active">🏠</button>
-            <button>🔍</button>
-            <button>📦</button>
-            <button>👤</button>
-        </nav>
-    </div>
+    <div id="app"></div>
+    <script type="module" src="src/main.js"></script>
 </body>
 </html>
