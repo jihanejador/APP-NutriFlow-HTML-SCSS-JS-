@@ -1,11 +1,13 @@
-export const getAllRecipes = async ()=> {
-    try{
-        const response = await fetch('http://dummyjson.com/recipes?limit=10');
-        const data = await response.json();
-        return data.recipes;
-    }
-    catch(err){
-        console.error("Error API: ",err);
-        return[];
-    }
+const BASE_URL = 'https://dummyjson.com/recipes';
+
+export const getAllRecipes = async () => {
+    const res = await fetch(`${BASE_URL}?limit=10`);
+    const data = await res.json();
+    return data.recipes;
+};
+
+export const searchRecipes = async (query) => {
+    const res = await fetch(`${BASE_URL}/search?q=${query}`);
+    const data = await res.json();
+    return data.recipes;
 };

@@ -10,7 +10,7 @@ export const renderLayout = (containerId) => {
                 <button class="menu">☰</button>
             </header>
             <h1 class="hero-title">feeling hungry?<br>what are we cookin today?</h1>
-            <div class="search-box">🔍 <input type="text" placeholder="Search recipes..."> ≡</div>
+            <div class="search-box">🔍 <input type="text" id="search-input" placeholder="Search recipes(e.g. Pizza)..."> ≡</div>
             <div class="categories">
                 <button class="active">see All</button><button>Soup</button><button>Salad</button>
             </div>
