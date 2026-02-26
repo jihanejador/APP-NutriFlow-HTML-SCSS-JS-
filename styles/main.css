@@ -1,0 +1,93 @@
+body {
+  background: #f0f0f0;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+.mobile-container {
+  width: 375px;
+  background: #ffffff;
+  min-height: 100vh;
+  position: relative;
+}
+.mobile-container .header {
+  background: #e6f9e6;
+  padding: 40px 20px 20px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 0 0 30px 30px;
+}
+.mobile-container .header .user-info {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.hero-title {
+  padding: 20px;
+  font-size: 1.4rem;
+  color: #333;
+}
+
+.search-box {
+  margin: 0 20px;
+  padding: 12px;
+  background: #fff;
+  border-radius: 25px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  gap: 10px;
+}
+.search-box input {
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  padding: 20px;
+}
+.grid .card .img-hold {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 130px;
+}
+.grid .card .img-hold img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.grid .card .img-hold .heart {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: white;
+}
+.grid .card h4 {
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+.grid .card p {
+  font-size: 0.7rem;
+  color: #888;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 375px;
+  height: 60px;
+  background: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid #eee;
+}
+
+/*# sourceMappingURL=main.css.map */
