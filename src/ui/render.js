@@ -21,3 +21,16 @@ export const renderLayout = (containerId) => {
     `;
 };
 
+export const renderRecipes = (recipes) => {
+    const grid = document.getElementById('recipe-grid');
+    grid.innerHTML = recipes.map(r => `
+        <div class="card">
+            <div class="img-hold">
+                <img src="${r.image}" alt="${r.name}">
+                <span class="heart">❤</span>
+            </div>
+            <h4>${r.name}</h4>
+            <p>${r.cuisine} • ${r.difficulty}</p>
+        </div>
+    `).join('');
+};
