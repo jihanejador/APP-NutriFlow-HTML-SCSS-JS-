@@ -157,4 +157,16 @@ body {
   color: #666;
 }
 
+.heart {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: white; /* Lawn l-asli */
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+.heart.active {
+  color: #ff4757 !important; /* Lawn l-7mer mlli i-tsajjal */
+}
+
 /*# sourceMappingURL=main.css.map */

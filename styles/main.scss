@@ -87,3 +87,13 @@ body { background: #f0f0f0; font-family: 'Poppins', sans-serif; display: flex; j
         ul, ol { padding-left: 20px; font-size: 0.85rem; color: #666; }
     }
 }
+.heart { 
+    position: absolute; top: 10px; left: 10px; 
+    color: white; /* Lawn l-asli */
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+    
+    &.active { 
+        color: #ff4757 !important; /* Lawn l-7mer mlli i-tsajjal */
+    }
+}
