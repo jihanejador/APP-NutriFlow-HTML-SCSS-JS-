@@ -1,47 +1,67 @@
 import { getAllRecipes, searchRecipes, getRecipesByCategory } from './api/recipeProvider.js';
-import { renderLayout, renderRecipes, renderModal } from './ui/render.js';
+import { renderLayout, renderRecipes, renderModal, renderFavoritesPage } from './ui/render.js';
+import { getFavorites, saveFavorite, removeFavorite, isFavorite } from './services/storageService.js';
+
+let allRecipes = []; // Khallina n-khbiw l-data hna bach t-koun accessible
 
 async function init() {
     renderLayout('app');
-    
-    
-    let currentRecipes = await getAllRecipes();
-    renderRecipes(currentRecipes);
+    allRecipes = await getAllRecipes();
+    renderRecipes(allRecipes);
 
+    // 1. Search Logic
     const searchInput = document.getElementById('search-input');
-    
-   
-    searchInput.addEventListener('input', async (e) => {
-        const query = e.target.value;
-        if (query.length > 0) {
-            currentRecipes = await searchRecipes(query);
-            renderRecipes(currentRecipes);
-        } else {
-            currentRecipes = await getAllRecipes();
-            renderRecipes(currentRecipes);
-        }
-    });
+    if(searchInput) {
+        searchInput.addEventListener('input', async (e) => {
+            const query = e.target.value;
+            const recipes = query.length > 0 ? await searchRecipes(query) : await getAllRecipes();
+            renderRecipes(recipes);
+        });
+    }
 
-    
+    // 2. Categories Logic
     document.querySelectorAll('.cat-btn').forEach(btn => {
         btn.addEventListener('click', async () => {
             const category = btn.innerText;
-            currentRecipes = (category === 'see All') ? await getAllRecipes() : await getRecipesByCategory(category);
-            renderRecipes(currentRecipes);
+            const recipes = (category === 'see All') ? await getAllRecipes() : await getRecipesByCategory(category);
+            renderRecipes(recipes);
         });
     });
 
-   
-    document.getElementById('recipe-grid').addEventListener('click', (e) => {
-        const card = e.target.closest('.card'); // sse77na closest
-        if (card) {
-            const recipeId = card.dataset.id; // sse77na dataset
-            const recipe = currentRecipes.find(r => r.id == recipeId);
-            if (recipe) {
-                renderModal(recipe);
+    // 3. Grid Click (Modal + Heart)
+    const grid = document.getElementById('recipe-grid');
+    grid.addEventListener('click', (e) => {
+        const card = e.target.closest('.card');
+        if (!card) return;
+        
+        const recipeId = parseInt(card.dataset.id);
+        // N-qellebo f allRecipes aw current view
+        const recipe = allRecipes.find(r => r.id === recipeId);
+
+        if (e.target.classList.contains('heart')) {
+            e.stopPropagation();
+            if (isFavorite(recipeId)) {
+                removeFavorite(recipeId);
+                e.target.classList.remove('active');
+            } else {
+                saveFavorite(recipe);
+                e.target.classList.add('active');
             }
+        } else if (recipe) {
+            renderModal(recipe);
+        }
+    });
+
+    // 4. Navigation Logic
+    document.querySelector('.bottom-nav').addEventListener('click', (e) => {
+        if (e.target.id === 'nav-fav-btn' || e.target.closest('#nav-fav-btn')) {
+            loadFavoritesView();
+        }
+        if (e.target.id === 'nav-home-btn' || e.target.closest('#nav-home-btn')) {
+            init();
         }
     });
 }
+
 
 init();
