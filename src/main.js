@@ -23,7 +23,25 @@ async function init() {
     });
 
     
+    document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.addEventListener('click', async () => {
+            const category = btn.innerText;
+            currentRecipes = (category === 'see All') ? await getAllRecipes() : await getRecipesByCategory(category);
+            renderRecipes(currentRecipes);
+        });
+    });
+
    
+    document.getElementById('recipe-grid').addEventListener('click', (e) => {
+        const card = e.target.closest('.card'); // sse77na closest
+        if (card) {
+            const recipeId = card.dataset.id; // sse77na dataset
+            const recipe = currentRecipes.find(r => r.id == recipeId);
+            if (recipe) {
+                renderModal(recipe);
+            }
+        }
+    });
 }
 
 init();
