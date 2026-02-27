@@ -63,5 +63,21 @@ async function init() {
     });
 }
 
+function loadFavoritesView() {
+    const favorites = getFavorites();
+    renderFavoritesPage('app');
+    
+    const favGrid = document.getElementById('favorites-grid');
+    if (favGrid) {
+        favGrid.id = 'recipe-grid'; 
+        renderRecipes(favorites);
+        
+        document.getElementById('btn-back').onclick = () => init();
+        // Navigation Icons hta f fav page
+        document.querySelector('.bottom-nav').onclick = (e) => {
+             if (e.target.id === 'nav-home-btn') init();
+        };
+    }
+}
 
 init();
