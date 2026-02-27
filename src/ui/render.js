@@ -44,3 +44,46 @@ export const renderRecipes = (recipes) => {
     `).join('');
 };
 
+export const renderModal = (recipe) => {
+    const modal = document.createElement('div');
+    modal.className = 'modal-overlay';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-modal">←</button>
+                <span class="header-title">Recipes</span>
+            </div>
+            
+            <div class="modal-body">
+                <div class="recipe-top-info">
+                    <h2>${recipe.name}</h2>
+                    <span class="rating">⭐ ${recipe.rating || '4.5'}</span>
+                </div>
+
+                <div class="recipe-stats">
+                    <span>⏱ ${recipe.prepTimeMinutes} min</span>
+                    <span>📊 ${recipe.difficulty}</span>
+                </div>
+
+                <div class="image-wrapper">
+                    <img src="${recipe.image}" alt="${recipe.name}">
+                </div>
+                
+                <div class="recipe-details">
+                    <details open>
+                        <summary>Ingredients</summary>
+                        <ul>${recipe.ingredients.map(ing => `<li>${ing}</li>`).join('')}</ul>
+                    </details>
+                    
+                    <details>
+                        <summary>Directions</summary>
+                        <ol>${recipe.instructions.map(step => `<li>${step}</li>`).join('')}</ol>
+                    </details>
+                </div>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+
+    modal.querySelector('.close-modal').onclick = () => modal.remove();
+};
