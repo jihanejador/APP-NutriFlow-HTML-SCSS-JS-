@@ -11,9 +11,14 @@ export const renderLayout = (containerId) => {
             </header>
             <h1 class="hero-title">feeling hungry?<br>what are we cookin today?</h1>
             <div class="search-box">🔍 <input type="text" id="search-input" placeholder="Search recipes(e.g. Pizza)..."> ≡</div>
+            
             <div class="categories">
-                <button class="active">see All</button><button>Soup</button><button>Salad</button>
+                <button class="cat-btn active">see All</button>
+                <button class="cat-btn">Breakfast</button>
+                <button class="cat-btn">Lunch</button>
+                <button class="cat-btn">Beverages</button>
             </div>
+            
             <div class="section-label"><h3>Recommendation</h3><a href="#">see All</a></div>
             <div id="recipe-grid" class="grid"></div>
             <nav class="bottom-nav">🏠 🔍 📦 👤</nav>
@@ -23,8 +28,12 @@ export const renderLayout = (containerId) => {
 
 export const renderRecipes = (recipes) => {
     const grid = document.getElementById('recipe-grid');
+    if (!recipes || recipes.length === 0) {
+        grid.innerHTML = "<p style='padding:20px'>No recipes found.</p>";
+        return;
+    }
     grid.innerHTML = recipes.map(r => `
-        <div class="card">
+        <div class="card" data-id="${r.id}" style="cursor: pointer;">
             <div class="img-hold">
                 <img src="${r.image}" alt="${r.name}">
                 <span class="heart">❤</span>
@@ -34,3 +43,4 @@ export const renderRecipes = (recipes) => {
         </div>
     `).join('');
 };
+

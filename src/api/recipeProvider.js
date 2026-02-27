@@ -11,3 +11,8 @@ export const searchRecipes = async (query) => {
     const data = await res.json();
     return data.recipes;
 };
+export const getRecipesByCategory = async (category) => {
+    const res = await fetch(`${BASE_URL}/category/${category}`);
+    const data = await res.json();
+    return data.recipes;
+};
