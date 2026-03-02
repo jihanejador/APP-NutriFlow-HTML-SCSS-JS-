@@ -88,7 +88,8 @@ body {
   justify-content: space-around;
   align-items: center;
   border-top: 1px solid #eee;
-} /* Modal Overlay: L-khalfiya l-k7la */
+}
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -105,12 +106,11 @@ body {
 
 .modal-content {
   background: white;
-  width: 90%; /* Bach t-khlli chwiya d l-espace f l-jnab */
-  max-width: 350px; /* 3ard l-iPhone */
-  max-height: 80vh; /* Mat-foutch 80% dial t-toul */
+  width: 90%;
+  max-width: 350px;
+  max-height: 80vh;
   border-radius: 30px;
-  overflow: hidden; /* Bach l-image mat-foutch l-kadar */
-  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
@@ -129,12 +129,12 @@ body {
 }
 .modal-content img {
   width: 100%;
-  height: 200px; /* Hna l-sir! 7dddi liha t-toul */
-  object-fit: cover; /* Bach mat-t-jbedch t-swira */
+  height: 200px;
+  object-fit: cover;
 }
 .modal-content .details-scroll {
   padding: 20px;
-  overflow-y: auto; /* Koulchi l-kitaba t-koun hna bach t-scrolly */
+  overflow-y: auto;
 }
 .modal-content .details-scroll h2 {
   font-size: 1.3rem;
@@ -161,12 +161,12 @@ body {
   position: absolute;
   top: 10px;
   left: 10px;
-  color: white; /* Lawn l-asli */
+  color: white;
   font-size: 1.2rem;
   transition: color 0.3s ease;
 }
 .heart.active {
-  color: #ff4757 !important; /* Lawn l-7mer mlli i-tsajjal */
+  color: #ff4757 !important;
 }
 
 /*# sourceMappingURL=main.css.map */

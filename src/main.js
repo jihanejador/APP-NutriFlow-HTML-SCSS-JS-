@@ -2,14 +2,13 @@ import { getAllRecipes, searchRecipes, getRecipesByCategory } from './api/recipe
 import { renderLayout, renderRecipes, renderModal, renderFavoritesPage } from './ui/render.js';
 import { getFavorites, saveFavorite, removeFavorite, isFavorite } from './services/storageService.js';
 
-let allRecipes = []; // Khallina n-khbiw l-data hna bach t-koun accessible
+let allRecipes = []; 
 
 async function init() {
     renderLayout('app');
     allRecipes = await getAllRecipes();
     renderRecipes(allRecipes);
 
-    // 1. Search Logic
     const searchInput = document.getElementById('search-input');
     if(searchInput) {
         searchInput.addEventListener('input', async (e) => {
@@ -19,7 +18,6 @@ async function init() {
         });
     }
 
-    // 2. Categories Logic
     document.querySelectorAll('.cat-btn').forEach(btn => {
         btn.addEventListener('click', async () => {
             const category = btn.innerText;
@@ -28,14 +26,12 @@ async function init() {
         });
     });
 
-    // 3. Grid Click (Modal + Heart)
     const grid = document.getElementById('recipe-grid');
     grid.addEventListener('click', (e) => {
         const card = e.target.closest('.card');
         if (!card) return;
         
         const recipeId = parseInt(card.dataset.id);
-        // N-qellebo f allRecipes aw current view
         const recipe = allRecipes.find(r => r.id === recipeId);
 
         if (e.target.classList.contains('heart')) {
@@ -52,7 +48,6 @@ async function init() {
         }
     });
 
-    // 4. Navigation Logic
     document.querySelector('.bottom-nav').addEventListener('click', (e) => {
         if (e.target.id === 'nav-fav-btn' || e.target.closest('#nav-fav-btn')) {
             loadFavoritesView();
@@ -73,7 +68,6 @@ function loadFavoritesView() {
         renderRecipes(favorites);
         
         document.getElementById('btn-back').onclick = () => init();
-        // Navigation Icons hta f fav page
         document.querySelector('.bottom-nav').onclick = (e) => {
              if (e.target.id === 'nav-home-btn') init();
         };

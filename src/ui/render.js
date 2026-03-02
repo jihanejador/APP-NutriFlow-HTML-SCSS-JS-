@@ -43,7 +43,7 @@ export const renderRecipes = (recipes) => {
         grid.innerHTML = "<p style='padding:20px'>No recipes found.</p>";
         return;
     }
-    // Zdt hna "return" li kant naqsa u l-path dial heart active
+    
     grid.innerHTML = recipes.map(r => {
         const heartClass = isFavorite(r.id) ? 'heart active' : 'heart';
         return `
